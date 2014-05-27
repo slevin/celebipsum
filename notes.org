@@ -1,0 +1,50 @@
+* main steps
+
+create a first test
+and run it
+
+
+test get words from corpus
+ and that I can get set of words
+
+
+read in corpus
+
+generate dictionary of pairs
+ (initially can be hash table I guess)
+
+based on n-1 or n-2 or n-3
+(normalized)
+
+each "word word+1" maps to list of words
+
+then grab random two words
+search for match if no match of previous two
+then match * other
+
+or could build a trie maybe
+
+(could try both for fun)
+
+need to read in the corpus
+
+need to figure out punctuation
+(punctuation might just be a word)
+
+input needs to be normalized
+
+could test my way in making sure that
+ it could read in words two at a time and return those
+ and continue through the rest of the stream
+
+but then I'm stuck
+
+all the way through till there aren't 3 left
+
+dict of first
+  each one points to a dict of
+
+hashtable
+ key is two words and object is list of third
+
+then random onej

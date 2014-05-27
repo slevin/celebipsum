@@ -1,7 +1,10 @@
 defmodule CelebipsumTest do
   use ExUnit.Case
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  import C
+  test "text stream parser returns first word" do
+    first = first_word("one two three")
+    assert first == "one"
   end
+
 end
