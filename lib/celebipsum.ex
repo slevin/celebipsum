@@ -41,4 +41,32 @@ defmodule Celebipsum do
     IO.puts inspect(parse(in_string))
   end
 
+## generation
+
+  def word_list(corpus, count) do
+    _word_list([], corpus, [], count)
+  end
+
+  #def _word_list(_, _, 0), do: []
+  def _word_list(sofar, corpus, _, count) when count < 3 do
+    sofar ++
+    corpus
+    |> Dict.keys
+    |> Enum.shuffle
+    |> Enum.fetch!(0)
+    |> Enum.take(count)
+  end
+
+  def _word_list(scorpus, _, count) when count >= 3 do
+    [one, two] = word_list(corpus, 2)
+    [one, two] ++ _word_list(corpus, one, two, count - 2)
+  end
+
+  def _word_list(corpus, prev2, prev1, _count) do
+    Dict.fetch!(corpus, [prev2, prev1])
+    |> Enum.shuffle
+    |> Enum.fetch!(0)
+    |> List.wrap
+  end
+
 end

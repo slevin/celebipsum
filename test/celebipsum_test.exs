@@ -48,10 +48,39 @@ defmodule CelebipsumTest do
     assert Dict.equal?(res, answer), res, answer, "dicts not equal"
   end
 
-# test that same initals are stored in list if different
-# and if same
+## generation tests
 
-# test parsing io stream in
+  test "generate 0 words generates empty list" do
+    corpus = %{~w{one two} => ["three"]}
+    list = word_list(corpus, 0)
+    assert list === []
+  end
+
+  test "generate 1 word generates one from possibilities" do
+    corpus = %{~w{one two} => ["three"]}
+    list = word_list(corpus, 1)
+    assert list === ["one"]
+  end
+
+  test "generate 2 words generates one from possibilities" do
+    corpus = %{~w{one two} => ["three"]}
+    list = word_list(corpus, 2)
+    assert list === ["one", "two"]
+  end
+
+  test "generate 3 words generates one from possibilities" do
+    corpus = %{~w{one two} => ["three"]}
+    list = word_list(corpus, 3)
+    assert list === ["one", "two", "three"]
+  end
+
+  test "generate 4 words generates one from possibilities" do
+    corpus = %{~w{one two} => ["three"], ~w{two three} => ["four"]}
+    list = word_list(corpus, 4)
+    assert list === ["one", "two", "three", "four"]
+  end
+
+
 
 # test picking random
 
@@ -59,20 +88,9 @@ defmodule CelebipsumTest do
 
 # test generating a result set based on input
 
-
-
-  # test "words are stored decapitalized" do
-  #   res = Celebipsum.parse("One Two Three")
-  #   assert Dict.equal?(res, %{"one two" => ["three"]})
-  # end
-
-
-
-  # compare two hashdicts
-
-  # test "text stream parser returns first word" do
-  #   first = first_word("one two three")
-  #   assert first == "one"
-  # end
+# could do some capital/punctuation normalization
+# but that would mess with things to some degree
+# because first and last words have some meaning
+# even if there's less overlap
 
 end
