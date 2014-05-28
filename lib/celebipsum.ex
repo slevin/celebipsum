@@ -38,7 +38,7 @@ defmodule Celebipsum do
 
   def readcorpus do
     {:ok, in_string} = File.read "corpus.txt"
-    IO.puts inspect(parse(in_string))
+    parse(in_string)
   end
 
 ## generation
@@ -47,9 +47,7 @@ defmodule Celebipsum do
     _word_list([], corpus, [], count)
   end
 
-  #def _word_list(_, _, 0), do: []
-  def _word_list(sofar, corpus, _, count) when count < 3 do
-    sofar ++
+  def _word_list([], corpus, [], count) when count < 3 do
     corpus
     |> Dict.keys
     |> Enum.shuffle
@@ -57,16 +55,32 @@ defmodule Celebipsum do
     |> Enum.take(count)
   end
 
-  def _word_list(scorpus, _, count) when count >= 3 do
-    [one, two] = word_list(corpus, 2)
-    [one, two] ++ _word_list(corpus, one, two, count - 2)
+  def _word_list([], corpus, [], count) when count >= 3 do
+    [one, two] = _word_list([], corpus, [], 2)
+    _word_list([one, two], corpus, [one, two], count)
   end
 
-  def _word_list(corpus, prev2, prev1, _count) do
+  def _word_list(sofar, corpus, [prev2, prev1], count) when length(sofar) < count do
+    follower = follower(corpus, prev2, prev1)
+    _word_list(sofar ++ [follower], corpus, [prev1, follower], count)
+  end
+
+  def _word_list(sofar, _, _, count) when length(sofar) >= count do
+    sofar
+  end
+
+  def follower(corpus, prev2, prev1) do
     Dict.fetch!(corpus, [prev2, prev1])
     |> Enum.shuffle
     |> Enum.fetch!(0)
-    |> List.wrap
+  end
+
+  def generate(length) do
+    :random.seed(:erlang.now)
+    readcorpus()
+    |> word_list(length)
+    |> Enum.join(" ")
+    |> IO.puts
   end
 
 end
