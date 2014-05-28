@@ -20,31 +20,31 @@ defmodule CelebipsumTest do
 
   test "triples are stored in a dict" do
     res = Celebipsum.parse("one two three")
-    assert Dict.equal?(res, %{"one two" => ["three"]})
+    assert Dict.equal?(res, %{~w{one two} => ["three"]})
   end
 
   test "merge builds lists" do
-    d1 = %{"one two" => ["a"]}
-    d2 = %{"one two" => ["b"]}
+    d1 = %{~w{one two} => ["a"]}
+    d2 = %{~w{one two} => ["b"]}
     res = markovmerge(d1, d2)
-    assert res ===  %{"one two" => ["a", "b"]}
+    assert res ===  %{~w{one two} => ["a", "b"]}
   end
 
   test "second tripple also stored in same dict" do
     res = parse("one two three four")
-    answer = %{"one two" => ["three"], "two three" => ["four"]}
+    answer = %{~w{one two} => ["three"], ~w{two three} => ["four"]}
     assert Dict.equal?(res, answer), res, answer, "dicts not equal"
   end
 
   test "merges duplicates" do
     res = parse("one one one two")
-    answer = %{"one one" => ["one", "two"]}
+    answer = %{~w{one one} => ["one", "two"]}
     assert Dict.equal?(res, answer), res, answer, "dicts not equal"
   end
 
   test "ignores extra whitespace" do
     res = parse("\n  one  two\n\t  three   ")
-    answer = %{"one two" => ["three"]}
+    answer = %{~w{one two} => ["three"]}
     assert Dict.equal?(res, answer), res, answer, "dicts not equal"
   end
 
