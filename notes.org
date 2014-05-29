@@ -1,6 +1,5 @@
 * celebipsum
 
-make the same thing a webservice
 
 need a headline generator
 
@@ -13,6 +12,10 @@ problem with not finding a match
  and why is it possible to not find a match
  shouldn't it technically always find a match?
 
+needs a supervisor to handle the crash problem
+
+could do a whole mix of headlines, photos, tags, overlays, etc
+ ongoing fun!
 
 
 would be fun to try same problem in clojure, haskell and go

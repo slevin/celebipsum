@@ -32,13 +32,16 @@ defmodule Celebipsum.Generator do
     |> Enum.fetch!(0)
   end
 
-  def generate(length) do
-    :random.seed(:erlang.now)
-    Reader.readcorpus()
+  def generate(corpus, length) do
+    corpus
     |> word_list(length)
     |> Enum.join(" ")
-    |> IO.puts
   end
 
+  def doall(length) do
+    :random.seed(:erlang.now)
+    generate(Reader.readcorpus(), length)
+    |> IO.puts
+  end
 
 end
