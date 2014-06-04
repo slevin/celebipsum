@@ -1,21 +1,34 @@
 * celebipsum
 
+make celebipsum have a supervisor process
+ crash it and make sure it starts again
 
-need a headline generator
+then separate into reader and generator servers
+and have a main supervisor watch both of them
+  and the generator knows about the reader (it has to in order to make a call)
 
 need first part to be capitalized
 
 last part to be period
+ after reach word count, keep going until period
+
+
+paragraphs
+
+
+
+
+need a headline generator
+ with separate corpus
 
 problem with not finding a match
  what to do next
  and why is it possible to not find a match
  shouldn't it technically always find a match?
 
-needs a supervisor to handle the crash problem
-
 could do a whole mix of headlines, photos, tags, overlays, etc
  ongoing fun!
 
+figure out how to read stuff from other sites
 
 would be fun to try same problem in clojure, haskell and go

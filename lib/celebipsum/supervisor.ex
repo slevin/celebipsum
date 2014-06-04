@@ -1,18 +1,16 @@
 defmodule Celebipsum.Supervisor do
-  use Supervisor.Behaviour
+  use Supervisor
 
   def start_link do
-    :supervisor.start_link(__MODULE__, [])
+    result = {:ok, sup } = Supervisor.start_link(__MODULE__, [], debug: [:trace])
+    #{:ok, reader} = Supervisor.start_child(sup, worker(Celebipsum.ReaderServer, []))
+#    {:ok, _generator} = Supervisor.start_child(sup, worker(Celebipsum.GeneratorServer, reader))
+    #{:ok, _generator} = Supervisor.start_child(sup, worker(Celebipsum.GeneratorServer, []))
+    #result
   end
 
   def init([]) do
-    children = [
-      # Define workers and child supervisors to be supervised
-      # worker(Celebipsum.Worker, [arg1, arg2, arg3])
-    ]
-
-    # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html
-    # for other strategies and supported options
-    supervise(children, strategy: :one_for_one)
+    supervise [], strategy: :rest_for_one
   end
+
 end
