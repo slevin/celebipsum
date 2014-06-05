@@ -2,11 +2,11 @@ defmodule Celebipsum.ReaderServer do
   use GenServer
 
   def start_link do
-    GenServer.start_link(__MODULE__, [], name: __MODULE__)
+    GenServer.start_link(__MODULE__, [])
   end
 
-  def get_corpus() do
-    GenServer.call __MODULE__, :get_corpus
+  def get_corpus(pid) do
+    GenServer.call pid, :get_corpus
   end
 
   def init(_) do
