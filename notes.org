@@ -1,20 +1,13 @@
 * celebipsum
 
-how to get first word be capitalized
-filter keys on first index being capitalized
- then pick that one instead
 
-
+last part to be period
+ after reach word count, keep going until period
 
 
 remove more boring sentences from corpus
 
 
-
-need first part to be capitalized
-
-last part to be period
- after reach word count, keep going until period
 
 
 add more to corpus
