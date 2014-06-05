@@ -1,11 +1,15 @@
 * celebipsum
 
-make celebipsum have a supervisor process
- crash it and make sure it starts again
+how to get first word be capitalized
+filter keys on first index being capitalized
+ then pick that one instead
 
-then separate into reader and generator servers
-and have a main supervisor watch both of them
-  and the generator knows about the reader (it has to in order to make a call)
+
+
+
+remove more boring sentences from corpus
+
+
 
 need first part to be capitalized
 
@@ -13,7 +17,15 @@ last part to be period
  after reach word count, keep going until period
 
 
-paragraphs
+add more to corpus
+
+clean up code to consistent style
+
+
+fix occasional crashing
+
+
+paragraphs?
 
 
 
@@ -31,4 +43,5 @@ could do a whole mix of headlines, photos, tags, overlays, etc
 
 figure out how to read stuff from other sites
 
-would be fun to try same problem in clojure, haskell and go
+would be fun to try same problem in clojure, haskell and go, swift, real erlang,
+ ruby with celluloid

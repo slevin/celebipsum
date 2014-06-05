@@ -7,6 +7,7 @@ defmodule Celebipsum.Generator do
   def _word_list([], corpus, [], count) when count < 3 do
     corpus
     |> Dict.keys
+    |> Enum.filter(fn x -> good_first_words(x) end)
     |> Enum.shuffle
     |> Enum.fetch!(0)
     |> Enum.take(count)
@@ -44,4 +45,10 @@ defmodule Celebipsum.Generator do
     |> IO.puts
   end
 
+  def good_first_words([first, second | []]) do
+    # first is capitalized and not begin or end in punctuation
+    # second does not begin or end in punctuation
+    Regex.match?(~r/^[^\p{P}\p{Ll}].*\P{P}$/, first) and
+                    Regex.match?(~r/^\P{P}.*\P{P}$/, second)
+  end
 end
