@@ -4,7 +4,10 @@ defmodule Celebipsum.Mixfile do
   def project do
     [app: :celebipsum,
      version: "0.0.1",
-     elixir: "~> 0.13.1",
+     build_per_environment: true,
+     dynamos: [Celebipsum.Dynamo],
+     compilers: [:elixir, :dynamo, :app],
+     elixir: "~> 0.13.3",
      deps: deps]
   end
 
@@ -12,16 +15,12 @@ defmodule Celebipsum.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [ applications: [],
+    [ applications: [:cowboy, :dynamo],
       mod: {Celebipsum, []} ]
   end
 
-  # List all dependencies in the format:
-  #
-  # {:foobar, git: "https://github.com/elixir-lang/foobar.git", tag: "0.1"}
-  #
-  # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [{:cowboy, github: "extend/cowboy"},
+     { :dynamo, "~> 0.1.0-dev", github: "dynamo/dynamo" }]
   end
 end

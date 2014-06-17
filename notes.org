@@ -1,11 +1,19 @@
 * celebipsum
 
 
+figure out how to start same servers
+
+
+
 last part to be period
  after reach word count, keep going until period
 
 
 remove more boring sentences from corpus
+
+
+would like some sort of open connection that shows running servers
+and can force shutdown others
 
 
 
@@ -38,3 +46,29 @@ figure out how to read stuff from other sites
 
 would be fun to try same problem in clojure, haskell and go, swift, real erlang,
  ruby with celluloid
+
+can have users submit text files which start up a new server (no database)
+
+then people can checkmark different corpuses and it will generate from multipes
+(essentially making new servers with the combined copruses)
+
+then could make something that saves important ones if they ever terminate
+ (for whatever reason)
+
+could you do a markovian face
+ break down faces into squares and then replace with related parts on other faces
+ based on where those squares fall in relation to other key parts of other faces
+
+
+
+* easy server / easy event
+
+how could I simulate gen_server in obj c?
+
+want to be able to start them up and supervise them
+and send calls async or sync to them
+
+and they maintain their own state
+
+how is that different than an object just sitting there waiting?
+is it just that everything is on a background thread?
