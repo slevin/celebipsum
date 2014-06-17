@@ -6,7 +6,7 @@ defmodule Celebipsum.Dynamo do
     env: Mix.env,
 
     # The OTP application associated with this Dynamo
-    otp_app: :testdynamo,
+    otp_app: :celebipsum,
 
     # The endpoint to dispatch requests to
     endpoint: ApplicationRouter,
